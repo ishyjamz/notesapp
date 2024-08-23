@@ -1,0 +1,31 @@
+@import "../../../main-styles.scss";
+
+.layout-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  overflow: hidden;
+
+  .page-content {
+    flex-grow: 1;
+    overflow-y: scroll;
+  }
+}
+
+.top-bar {
+  width: 100%;
+  height: 68px;
+  background: linear-gradient(to right, $pink, $purple);
+
+  display: flex;
+  flex-shrink: 0; //prevents top bar from shrinking
+
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 24px;
+    color: white;
+  }
+}
