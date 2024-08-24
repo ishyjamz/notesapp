@@ -18,6 +18,8 @@
   height: 68px;
   background: linear-gradient(to right, $pink, $purple);
 
+  box-shadow: 0px 0px 10px 0px rgba(black, 0.15);
+
   display: flex;
   flex-shrink: 0; //prevents top bar from shrinking
 

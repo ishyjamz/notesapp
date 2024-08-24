@@ -19,6 +19,8 @@ body {
   height: 100%;
   font-size: 18px !important;
   overflow: hidden !important;
+  background-color: $body-background-color;
+  color: $input-background-color;
 }
 
 // Import the Google Font
