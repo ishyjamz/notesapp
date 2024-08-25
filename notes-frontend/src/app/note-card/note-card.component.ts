@@ -7,18 +7,24 @@ import {
   AfterViewInit,
   Input,
   input,
+  Output,
+  EventEmitter,
 } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-note-card',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './note-card.component.html',
   styleUrl: './note-card.component.scss',
 })
 export class NoteCardComponent implements OnInit, AfterViewInit {
   @Input() title!: string;
   @Input() body!: string;
+  @Input() link!: string;
+
+  @Output('delete') deleteNoteEvent = new EventEmitter<void>();
 
   @ViewChild('truncator') truncator!: ElementRef<HTMLElement>;
   @ViewChild('bodyText') bodyText!: ElementRef<HTMLElement>;
@@ -35,5 +41,9 @@ export class NoteCardComponent implements OnInit, AfterViewInit {
     } else {
       this.renderer.setStyle(this.truncator.nativeElement, 'display', 'none');
     }
+  }
+
+  deleteNote() {
+    this.deleteNoteEvent.emit();
   }
 }

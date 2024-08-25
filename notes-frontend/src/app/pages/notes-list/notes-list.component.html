@@ -2,7 +2,13 @@
   <div class="search-bar-container">
     <div class="field">
       <p class="control has-icons-left">
-        <input class="input" type="text" placeholder="Filter" />
+        <input
+          #filterInput
+          class="input"
+          type="text"
+          (keyup)="filter(filterInput.value)"
+          placeholder="Filter"
+        />
         <span class="icon is-small is-left">
           <i class="fas fa-search"></i>
         </span>
@@ -11,22 +17,15 @@
   </div>
   <div class="notes-list">
     <app-note-card
-      [title]="'cheese puffs'"
-      [body]="'eat some cheese puffs'"
-    ></app-note-card>
-    <app-note-card
-      [title]="'grind 84x10 sbcs'"
-      [body]="'rise and grind big boy'"
-    ></app-note-card>
-    <app-note-card
-      [title]="'read books'"
-      [body]="
-        'Hi my name is Jamie. There was a time when radio played me, cos my music came from the heart. It was real to me but now its a path'
-      "
-    ></app-note-card>
-    <app-note-card
-      [title]="'take out the trash'"
-      [body]="'yessir'"
+      *ngFor="let note of filteredNotes; index as i"
+      [link]="generateNoteUrl(note)"
+      [title]="note.title"
+      [body]="note.body"
+      (delete)="onDeleteNote(note)"
     ></app-note-card>
   </div>
+
+  <button class="button floating-add-button is-primary" routerLink="new">
+    Add Note
+  </button>
 </div>
